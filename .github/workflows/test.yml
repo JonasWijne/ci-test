@@ -21,6 +21,7 @@ jobs:
       - name: say it
         run: echo "${{ env.app_version }}"
   rerun:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: resay
