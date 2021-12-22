@@ -10,7 +10,7 @@ on:
       - main
       
 env:
-  app_version2: "${{ github.ref_type == 'tag' && 'test' || 'no' }}"
+  app_version2: "${{ github.ref_type == 'branch' && github.sha || github.ref }}"
 jobs:
   test:
     runs-on: ubuntu-latest
