@@ -17,6 +17,6 @@ jobs:
       - name: echo sha
         run: echo "${{ github.sha }}"
       - name: calculate version
-        run: 'echo "app_version=$([ "${{ github.ref_type }}" = "tag" ] && echo "{{ github.ref }}" || echo "{{ github.sha }}")" >> $GITHUB_ENV'
+        run: 'echo "app_version=$([ "${{ github.ref_type }}" = "tag" ] && echo "${{ github.ref }}" || echo "${{ github.sha }}")" >> $GITHUB_ENV'
       - name: say it
         run: echo "${{ env.app_version }}"
