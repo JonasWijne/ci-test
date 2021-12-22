@@ -20,3 +20,8 @@ jobs:
         run: 'echo "app_version=$([ "${{ github.ref_type }}" = "tag" ] && echo "${{ github.ref }}"| sed "s/refs\/tags\///" || echo "${{ github.sha }}")" >> $GITHUB_ENV'
       - name: say it
         run: echo "${{ env.app_version }}"
+  rerun:
+    runs-on: ubuntu-latest
+    steps:
+      - name: resay
+        run: echo "${{ env.app_version }}"
