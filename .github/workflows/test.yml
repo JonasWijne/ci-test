@@ -8,21 +8,18 @@ on:
   pull_request:
     branches:
       - main
+      
+env:
+  app_version2: "${{ github.ref }}"
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: echo "hello world"
+        run: echo "${{ env.app_version2 }}"
       - name: echo sha
         run: echo "${{ github.sha }}"
       - name: calculate version
         run: 'echo "app_version=$([ "${{ github.ref_type }}" = "tag" ] && echo "${{ github.ref }}"| sed "s/refs\/tags\///" || echo "${{ github.sha }}")" >> $GITHUB_ENV'
       - name: say it
-        run: echo "${{ env.app_version }}"
-  rerun:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: resay
         run: echo "${{ env.app_version }}"
