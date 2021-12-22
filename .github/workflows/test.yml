@@ -17,4 +17,6 @@ jobs:
       - name: echo sha
         run: echo "${{ github.sha }}"
       - name: calculate version
-        run: '[ "branch" = "tag" ] && echo "test" || echo "no"'
+        run: 'echo "app_version=$([ "branch" = "tag" ] && echo "test" || echo "no")" >> $GITHUB_ENV'
+      - name: say it
+        run: echo "${{ env.app_version }}"
