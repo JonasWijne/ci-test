@@ -14,3 +14,5 @@ jobs:
     steps:
       - name: test
         run: echo "hello world"
+      - name: test
+        run: echo "${{ github.sha }}"
