@@ -14,5 +14,7 @@ jobs:
     steps:
       - name: test
         run: echo "hello world"
-      - name: test
+      - name: echo sha
         run: echo "${{ github.sha }}"
+      - name: calculate version
+        run: '[ "branch" = "tag" ] && echo "test" || echo "no'
